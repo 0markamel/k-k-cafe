@@ -1,0 +1,519 @@
+/* style.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+  background: #111;
+  color: #fff;
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+
+.overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url("images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 26px;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #d4af37;
+}
+
+.main-content {
+  flex: 1;
+  text-align: center;
+  padding: 40px 0;
+}
+
+h2 {
+  font-size: 32px;
+  color: #d4af37;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  background: #222;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #d4af37;
+  color: #111;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="datetime-local"],
+button[type="submit"] {
+  width: 250px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 24px;
+  }
+  .btn {
+    width: 90%;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+body.dark {
+  background: url('images/hero-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Cairo', sans-serif;
+  color: #fff;
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+}
+
+.booking-container {
+  background-color: rgba(0, 0, 0, 0.75);
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #000;
+}
+
+.booking-container h1 {
+  text-align: center;
+  color: #d4af37; /* لون ذهبي مطفي */
+  margin-bottom: 20px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.booking-form input,
+.booking-form textarea {
+  background: #222;
+  color: #fff;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  outline: 2px solid #d4af37;
+}
+
+.booking-form button {
+  background-color: #d4af37;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.booking-form button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.back-home {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #d4af37;
+  text-decoration: none;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}
+/* موبايلات صغيرة */
+@media (max-width: 600px) {
+  header nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero, .menu, .booking {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-image: url('images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* الهيدر */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #aaa;
+}
+
+.logo {
+  font-size: 28px;
+  color: #d4af37; /* ذهبي مطفي */
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: #eee;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #d4af37;
+}
+
+/* المحتوى الرئيسي */
+.main-content {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.main-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.main-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #ccc;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: #d4af37;
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #b4952e;
+}
+
+/* الفوتر */
+.footer {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* ميديا كويري للموبايل */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 22px;
+  }
+
+  .main-content h2 {
+    font-size: 24px;
+  }
+
+  .main-content p {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+}
+
+.hero {
+  background: url("images/hero-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: white;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* الهيدر */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: gold;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: gold;
+}
+
+/* المحتوى */
+.main-content {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.main-content h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.main-content p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.7;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+.btn {
+  background-color: gold;
+  color: black;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #d4af37;
+}
+
+/* قسم من نحن */
+.about-section {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.about-section h2 {
+  font-size: 26px;
+  color: gold;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #f0f0f0;
+}
+
+/* الفوتر */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* موبايل */
+@media (max-width: 600px) {
+  .main-content h2 {
+    font-size: 24px;
+  }
+  .main-content p, .about-section p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.hero {
+  background-image: url("images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif;
+  color: white;
+}
+.go-home {
+  display: inline-block;
+  margin: 40px auto;
+  padding: 12px 30px;
+  background: linear-gradient(145deg, #d4af37, #b8860b);
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.go-home:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #b8860b, #d4af37);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+}

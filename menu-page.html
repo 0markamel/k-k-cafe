@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منيو K&K Café</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      background-image: url("images/hero-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .overlay {
+      background-color: rgba(0,0,0,0.8);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1, h2, h3 {
+      color: gold;
+      text-align: center;
+    }
+    .tabs {
+      text-align: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .tab-button {
+      background: transparent;
+      border: 2px solid gold;
+      color: gold;
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    .tab-button:hover,
+    .tab-button.active {
+      background: gold;
+      color: black;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .menu-section {
+      margin-bottom: 2rem;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+    @media (max-width: 768px) {
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="index.html" class="go-home">
+  <span>🏠 الرجوع للرئيسية</span>
+</a>
+
+  <div class="overlay">
+    <h1>منيو K&K Café</h1>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-button active" onclick="showTab(0)">Cheesecakes</button>
+      <button class="tab-button" onclick="showTab(1)">Cakes & Desserts</button>
+      <button class="tab-button" onclick="showTab(2)">Waffles</button>
+      <button class="tab-button" onclick="showTab(3)">Pancakes</button>
+      <button class="tab-button" onclick="showTab(4)">Ice Cream</button>
+      <button class="tab-button" onclick="showTab(5)">Smoothies</button>
+      <button class="tab-button" onclick="showTab(6)">Fresh Juices</button>
+      <button class="tab-button" onclick="showTab(7)">Hot Drinks</button>
+      <button class="tab-button" onclick="showTab(8)">Hot & Ice Coffee</button>
+      <button class="tab-button" onclick="showTab(9)">Milkshakes</button>
+      <button class="tab-button" onclick="showTab(10)">Mojito</button>
+      <button class="tab-button" onclick="showTab(11)">Cocktails</button>
+      <button class="tab-button" onclick="showTab(12)">Frappe</button>
+      <button class="tab-button" onclick="showTab(13)">Grilled Chicken</button>
+      <button class="tab-button" onclick="showTab(14)">Panee Meals</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div id="tabs-content">
+      <!-- يتم ملء المحتوى ديناميكياً عبر JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    const tabsData = [
+      {
+        title: "Cheesecakes",
+        items: [
+          ["Chocolate Cheesecake", "60 EGP"],
+          ["Nutella Cheesecake", "65 EGP"],
+          ["Pistachio Cheesecake", "90 EGP"],
+          ["Lotus Cheesecake", "70 EGP"],
+          ["White Cheesecake", "65 EGP"],
+          ["Strawberry Cheesecake", "60 EGP"],
+          ["Blueberry Cheesecake", "60 EGP"],
+          ["Oreo Cheesecake", "70 EGP"],
+          ["Caramel Cheesecake", "60 EGP"],
+          ["Kinder Cheesecake", "70 EGP"],
+          ["White Mango Cheesecake", "75 EGP"],
+          ["White Crunch Cheesecake", "75 EGP"],
+          ["Nutella Crunch Cheesecake", "75 EGP"],
+          ["Nutella Strawberry Cheesecake", "75 EGP"],
+          ["White Blueberry Cheesecake", "75 EGP"],
+          ["Raffaello Cheesecake", "70 EGP"]
+        ]
+      },
+      {
+        title: "Cakes & Desserts",
+        items: [
+          ["Chocolate Cake", "85 EGP"],
+          ["KitKat Cake", "85 EGP"],
+          ["Red Velvet Cake", "90 EGP"],
+          ["Mango Twinkies", "80 EGP"],
+          ["Strawberry Nutella Cake", "85 EGP"],
+          ["Lotus Cake", "80 EGP"],
+          ["Madness Chocolate Cake", "80 EGP"],
+          ["Madness Cheesecake", "75 EGP"],
+          ["Madness Red Velvet", "80 EGP"],
+          ["Madness Pistachio", "100 EGP"],
+          ["Madness Fruit", "90 EGP"],
+          ["Brownies Cake", "70 EGP"],
+          ["Red Velvet Cake Slice", "70 EGP"],
+          ["Mini Cake", "75 EGP"],
+          ["Mini Pistachio Cake", "85 EGP"],
+          ["Nutella Cake", "70 EGP"],
+          ["Molten Cake Classic", "77 EGP"],
+          ["Molten Nutella Cake", "85 EGP"],
+          ["Molten Lotus Cake", "85 EGP"],
+          ["Molten Oreo Nutella Cake", "90 EGP"],
+          ["Molten Kinder Cake", "85 EGP"],
+          ["Special Molten Cake", "130 EGP"],
+          ["Pistachio Molten Cake", "110 EGP"]
+        ]
+      },
+      {
+        title: "Waffles",
+        items: [
+          ["Classic Waffle", "60 EGP"],
+          ["Nutella Waffle", "70 EGP"],
+          ["Lotus Waffle", "75 EGP"],
+          ["Pistachio Waffle", "100 EGP"],
+          ["Four Seasons Waffle", "90 EGP"],
+          ["Half & Half Waffle", "85 EGP"],
+          ["White Waffle", "70 EGP"],
+          ["Blueberry Waffle", "65 EGP"],
+          ["Strawberry Waffle", "65 EGP"],
+          ["Raffaello Waffle", "75 EGP"],
+          ["Kinder Waffle", "75 EGP"],
+          ["Nutella Oreo Waffle", "85 EGP"],
+          ["White Mango Waffle", "85 EGP"],
+          ["White Crunch Waffle", "85 EGP"],
+          ["Nutella Crunch Waffle", "85 EGP"],
+          ["Honey Nuts Waffle", "80 EGP"],
+          ["K&K Special Waffle", "120 EGP"],
+          ["Strawberry Nutella Waffle", "85 EGP"],
+          ["Waffle Sticks (Choose Flav)", "30 EGP"],
+          ["Pistachio Waffle Sticks", "40 EGP"]
+        ]
+      },
+      {
+        title: "Pancakes",
+        items: [
+          ["Chocolate Pancake", "70 EGP"],
+          ["Nutella Pancake", "90 EGP"],
+          ["Caramel Pancake", "80 EGP"],
+          ["Lotus Pancake", "90 EGP"],
+          ["Blueberry Pancake", "80 EGP"],
+          ["Strawberry Pancake", "80 EGP"],
+          ["Pistachio Pancake", "120 EGP"],
+          ["Fruit Pancake", "95 EGP"],
+          ["Honey Nuts Pancake", "85 EGP"],
+          ["K&K Mix Pancake", "115 EGP"]
+        ]
+      },
+      {
+        title: "Ice Cream",
+        items: [
+          ["Ice Cream Sundae", "30 EGP"],
+          ["Oreo Ice Cream", "40 EGP"],
+          ["Galaxy Ice Cream", "50 EGP"],
+          ["KitKat Ice Cream", "50 EGP"],
+          ["Snickers Ice Cream", "60 EGP"],
+          ["Flutes Ice Cream", "50 EGP"],
+          ["Lotus Ice Cream", "50 EGP"],
+          ["Pistachio Ice Cream", "60 EGP"]
+        ]
+      },
+      {
+        title: "Smoothies",
+        items: [
+          ["Mango Smoothie", "55 EGP"],
+          ["Strawberry Smoothie", "50 EGP"],
+          ["Lemon Smoothie", "35 EGP"],
+          ["Lemon Mint Smoothie", "45 EGP"],
+          ["Blueberry Smoothie", "50 EGP"],
+          ["Pineapple Smoothie", "50 EGP"],
+          ["Watermelon Smoothie", "55 EGP"],
+          ["Peach Smoothie", "50 EGP"],
+          ["Kiwi Smoothie", "60 EGP"],
+          ["Kiwi Splash Smoothie", "65 EGP"],
+          ["Green Apple Smoothie", "50 EGP"],
+          ["Passion Fruit", "50 EGP"],
+          ["Mango Passion", "63 EGP"],
+          ["Pineapple Passion", "63 EGP"],
+          ["Peach Mango", "63 EGP"]
+        ]
+      },
+      {
+        title: "Fresh Juices",
+        items: [
+          ["Mango Juice", "50 EGP"],
+          ["Strawberry Juice", "45 EGP"],
+          ["Guava Juice", "40 EGP"],
+          ["Lemon Juice", "35 EGP"],
+          ["Lemon Mint Juice", "40 EGP"],
+          ["Dates Juice", "47 EGP"],
+          ["Kiwi Juice", "60 EGP"],
+          ["Banana Juice", "40 EGP"],
+          ["Peach Juice", "50 EGP"],
+          ["Pineapple Juice", "50 EGP"],
+          ["Avocado Juice", "90 EGP"],
+          ["Orange Juice", "40 EGP"],
+          ["Watermelon Juice", "50 EGP"],
+          ["Watermelon Mint", "55 EGP"]
+        ]
+      },
+      {
+        title: "Hot Drinks",
+        items: [
+          ["Tea", "20 EGP"],
+          ["Green Tea", "25 EGP"],
+          ["Fruit Tea", "30 EGP"],
+          ["Milk Tea", "35 EGP"],
+          ["Herbs", "20 EGP"],
+          ["Mixed Herbs", "25 EGP"],
+          ["Hot Cider", "35 EGP"],
+          ["Orchid", "45 EGP"],
+          ["Fruit Orchid", "55 EGP"],
+          ["Karak Tea", "35 EGP"],
+          ["Hot Chocolate", "40 EGP"],
+          ["Hot Lotus", "50 EGP"],
+          ["Hot Oreo", "45 EGP"],
+          ["Hot Oreo Nutella", "50 EGP"],
+          ["Hot Nutella", "45 EGP"],
+          ["Hot Caramel", "45 EGP"]
+        ]
+      },
+      {
+        title: "Hot & Ice Coffee",
+        items: [
+          ["Espresso", "30–37 EGP"],
+          ["Coffee", "25–30 EGP"],
+          ["Macchiato", "35–40 EGP"],
+          ["Affogato", "45 EGP"],
+          ["Flat White", "45 EGP"],
+          ["Latte", "48 EGP"],
+          ["Cappuccino", "45 EGP"],
+          ["Americano", "40 EGP"],
+          ["Corto", "40 EGP"],
+          ["Mocha", "55 EGP"],
+          ["White Mocha", "60 EGP"],
+          ["Nescafe", "35 EGP"],
+          ["Spanish Latte", "55 EGP"],
+          ["Hazelnut", "40 EGP"],
+          ["French Coffee", "35 EGP"],
+          ["French Flavour", "45 EGP"],
+          ["Coffee Nutella", "45 EGP"],
+          ["Matcha", "70 EGP"],
+          ["Ice Americano", "40 EGP"],
+          ["Ice Latte", "50 EGP"],
+          ["Ice Latte Flavour", "55 EGP"],
+          ["Ice Cappuccino", "55 EGP"],
+          ["Ice Spanish Latte", "70 EGP"],
+          ["Ice Mocha", "60 EGP"],
+          ["Ice White Mocha", "60 EGP"],
+          ["Ice Caramel Macchiato", "58 EGP"],
+          ["Ice Matcha", "70 EGP"],
+          ["Ice Honey Latte", "60 EGP"],
+          ["Ice Mocha Pistachio", "70 EGP"]
+        ]
+      },
+      {
+        title: "Milkshakes",
+        items: [
+          ["Vanilla", "55 EGP"],
+          ["Chocolate", "60 EGP"],
+          ["Mango", "60 EGP"],
+          ["Caramel", "60 EGP"],
+          ["Strawberry", "60 EGP"],
+          ["Blueberry", "57 EGP"],
+          ["Green Apple", "57 EGP"],
+          ["Cherry", "57 EGP"],
+          ["Lotus", "70 EGP"],
+          ["Oreo", "67 EGP"],
+          ["Nutella", "65 EGP"],
+          ["Pistachio", "80 EGP"],
+          ["Mocha", "70 EGP"],
+          ["Galaxy", "70 EGP"],
+          ["Snickers", "80 EGP"],
+          ["Kit Kat", "75 EGP"],
+          ["Mix Berries", "65 EGP"],
+          ["Kiwi", "65 EGP"],
+          ["Kinder", "65 EGP"],
+          ["K&K Special", "100 EGP"]
+        ]
+      },
+      {
+        title: "Mojito",
+        items: [
+          ["Mojito Classic", "40 EGP"],
+          ["Mojito Kiwi", "45 EGP"],
+          ["Electric Blue", "40 EGP"],
+          ["Passion Fruit Mojito", "55 EGP"],
+          ["Mango Passion Mojito", "55 EGP"],
+          ["Maldives Mojito", "55 EGP"],
+          ["Cherry Cola Mojito", "60 EGP"],
+          ["Redbull Power Mojito", "50 EGP"],
+          ["Mojito Redbull Mix", "75 EGP"]
+        ]
+      },
+      {
+        title: "Cocktails",
+        items: [
+          ["Florida", "60 EGP"],
+          ["Tropical", "55 EGP"],
+          ["Pina Colada", "50 EGP"],
+          ["Havana", "65 EGP"],
+          ["Kiwi Mango", "60 EGP"],
+          ["Kiwi Dates", "65 EGP"],
+          ["Banana Caramel", "55 EGP"],
+          ["Banana Berry", "60 EGP"],
+          ["Fruit Power", "70 EGP"],
+          ["Mix K&K", "130 EGP"]
+        ]
+      },
+      {
+        title: "Frappe",
+        items: [
+          ["Frappe Classic", "60 EGP"],
+          ["Frappe Chocolate", "60 EGP"],
+          ["Frappe Vanilla", "60 EGP"],
+          ["Frappe Caramel", "60 EGP"],
+          ["Frappe Lotus", "60 EGP"],
+          ["Frappe Nutella", "60 EGP"],
+          ["Frappe Pistachio", "60 EGP"],
+          ["Frappe Oreo", "60 EGP"],
+          ["Frappe Kinder", "60 EGP"],
+          ["Frappe Matcha", "60 EGP"],
+          ["Frappe Spanish", "60 EGP"],
+          ["Frappe Fruit", "60 EGP"]
+        ]
+      },
+      {
+        title: "Grilled Chicken",
+        items: [
+          ["Grilled Chicken Sandwiches (Small)", "45–65 EGP"],
+          ["Grilled Chicken Sandwiches (Medium)", "60–70 EGP"],
+          ["Grilled Chicken Sandwiches (Large)", "75–95 EGP"],
+          ["Jumbo Syrian", "95 EGP"],
+          ["Mega Syrian", "125 EGP"],
+          ["Combo Small", "70 EGP"],
+          ["Combo Medium", "85 EGP"],
+          ["Combo Large", "100 EGP"],
+          ["Combo Jumbo", "115 EGP"],
+          ["Combo Mega", "140 EGP"],
+          ["Plates Small", "65 EGP"],
+          ["Plates Medium", "85 EGP"],
+          ["Plates Large", "105 EGP"],
+          ["Plates Jumbo", "125 EGP"],
+          ["Plates Mega", "150 EGP"],
+          ["Full Meal Small", "90 EGP"],
+          ["Full Meal Medium", "105 EGP"],
+          ["Full Meal Large", "125 EGP"],
+          ["Full Meal Jumbo", "145 EGP"],
+          ["Full Meal Mega", "170 EGP"]
+        ]
+      },
+      {
+        title: "Panee Meals",
+        items: [
+          ["Panee Sandwich Small", "50–70 EGP"],
+          ["Panee Sandwich Medium", "65–80 EGP"],
+          ["Panee Sandwich Large", "80–100 EGP"],
+          ["Panee Jumbo", "100 EGP"],
+          ["Panee Mega", "130 EGP"],
+          ["Combo Small", "75 EGP"],
+          ["Combo Medium", "90 EGP"],
+          ["Combo Large", "105 EGP"],
+          ["Combo Jumbo", "120 EGP"],
+          ["Combo Mega", "145 EGP"],
+          ["Plate Small", "70 EGP"],
+          ["Plate Medium", "90 EGP"],
+          ["Plate Large", "110 EGP"],
+          ["Plate Jumbo", "130 EGP"],
+          ["Plate Mega", "155 EGP"],
+          ["Full Meal Small", "95 EGP"],
+          ["Full Meal Medium", "110 EGP"],
+          ["Full Meal Large", "130 EGP"],
+          ["Full Meal Jumbo", "150 EGP"],
+          ["Full Meal Mega", "175 EGP"]
+        ]
+      }
+    ];
+
+
+    const tabsContent = document.getElementById("tabs-content");
+
+    tabsData.forEach((tab, index) => {
+      const contentDiv = document.createElement("div");
+      contentDiv.className = "tab-content" + (index === 0 ? " active" : "");
+      const section = document.createElement("div");
+      section.className = "menu-section";
+      const heading = document.createElement("h3");
+      heading.textContent = tab.title;
+      section.appendChild(heading);
+      tab.items.forEach(([name, price]) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "menu-item";
+        itemDiv.innerHTML = `<span>${name}</span><span>${price}</span>`;
+        section.appendChild(itemDiv);
+      });
+      contentDiv.appendChild(section);
+      tabsContent.appendChild(contentDiv);
+    });
+
+    function showTab(index) {
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const contents = document.querySelectorAll(".tab-content");
+      tabButtons.forEach(btn => btn.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+      tabButtons[index].classList.add("active");
+      contents[index].classList.add("active");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المنيو - K&K Café</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
+      background-image: url("images/hero-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      font-size: 2rem;
+      color: gold;
+    }
+
+    .nav-link {
+      margin: 0 1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      backdrop-filter: blur(5px);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: gold;
+      border: none;
+      color: black;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #caa100;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+      }
+
+      .nav-link {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">K&K Café</h1>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">الرئيسية</a>
+        <a href="booking.html" class="nav-link">احجز الآن</a>
+      </nav>
+    </header>
+
+    <!-- Menu Form -->
+    <h2 style="text-align: center;">اطلب من المنيو</h2>
+    <form id="menuForm">
+      <label for="name">اسم العميل:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="item">الصنف:</label>
+      <input type="text" id="item" name="item" required>
+
+      <label for="quantity">الكمية:</label>
+      <input type="number" id="quantity" name="quantity" required>
+
+      <label for="phone">رقم الهاتف:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="place">المكان:</label>
+      <input type="text" id="place" name="place" required>
+
+      <label for="notes">ملاحظات:</label>
+      <textarea id="notes" name="notes"></textarea>
+
+      <button type="submit">إرسال الطلب</button>
+      <div id="response" style="margin-top: 1rem;"></div>
+    </form>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 K&K Café. جميع الحقوق محفوظة. by omar kamel</p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("menuForm");
+    const responseDiv = document.getElementById("response");
+
+    function getCurrentDate() {
+      const today = new Date();
+      return today.toLocaleDateString('ar-EG'); // مثلاً: ٢٩‏/٦‏/٢٠٢٥
+    }
+
+    function getCurrentTime() {
+      const now = new Date();
+      return now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }); // مثلاً: ١٠:٣٥
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const data = [{
+        name: document.getElementById("name").value,
+        item: document.getElementById("item").value,
+        quantity: document.getElementById("quantity").value,
+        phone: document.getElementById("phone").value,
+        place: document.getElementById("place").value,
+        notes: document.getElementById("notes").value,
+        date: getCurrentDate(),
+        time: getCurrentTime()
+      }];
+
+      try {
+        const res = await fetch("https://sheetdb.io/api/v1/ozppaj3knran0", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ data })
+        });
+
+        if (res.ok) {
+          responseDiv.innerHTML = "✅ تم إرسال الطلب بنجاح";
+          form.reset();
+        } else {
+          responseDiv.innerHTML = "❌ حدث خطأ أثناء الإرسال";
+        }
+      } catch (error) {
+        responseDiv.innerHTML = "⚠️ فشل الاتصال بالخادم";
+      }
+    });
+  </script>
+</body>
+</html>
