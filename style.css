@@ -517,3 +517,120 @@ body {
   background: linear-gradient(145deg, #b8860b, #d4af37);
   box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
 }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  color: white;
+  position: relative;
+}
+
+.hero {
+  background-image: url('images/hero-bg.jpg'); /* تأكد أن الصورة موجودة */
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  animation: softGlow 15s ease-in-out infinite alternate;
+}
+
+@keyframes softGlow {
+  0% { filter: brightness(1) contrast(1); }
+  50% { filter: brightness(1.1) contrast(1.1); }
+  100% { filter: brightness(1) contrast(1); }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 0 0 10px #fff;
+}
+
+.nav .nav-link {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.nav .nav-link:hover {
+  color: gold;
+}
+
+.main-content {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #bfa046;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #bfa046;
+}
+.btn:hover {
+  box-shadow: 0 0 20px #fff, 0 0 30px #bfa046;
+  transform: scale(1.05);
+}
+
+.about-section {
+  margin: 100px 0 50px;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #111;
+  font-size: 0.9rem;
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png') repeat;
+  animation: moveStars 200s linear infinite;
+  z-index: -2;
+  opacity: 0.2;
+}
+@keyframes moveStars {
+  0% { background-position: 0 0; }
+  100% { background-position: -10000px 5000px; }
+}
+
+.light {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 80%);
+  z-index: -1;
+  transition: top 0.1s linear, left 0.1s linear;
+}
